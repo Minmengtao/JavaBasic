@@ -50,5 +50,3 @@ synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非�
 5. 锁绑定多个条件
 
 一个 ReentrantLock 可以同时绑定多个 Condition 对象。
-
-

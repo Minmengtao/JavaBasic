@@ -1,8 +1,6 @@
 package Concurrent;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 class MyRunnable implements Runnable {
     @Override
@@ -20,7 +18,7 @@ class MyThread extends Thread {
 
 class MyCallable implements Callable<Integer> {
     @Override
-    public Integer call() throws Exception {
+    public Integer call() {
         return 123;
     }
 
@@ -43,5 +41,12 @@ public class WaysToImplementThreads {
         Thread thread2 = new Thread(futureTask);
         thread2.start();
         System.out.println(futureTask.get());
+
+        //线程池实现线程
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        for(int i = 0; i < 5; i++) {
+            executorService.execute(new MyRunnable());
+        }
+        executorService.shutdown();
     }
 }
