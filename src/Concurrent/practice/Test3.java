@@ -1,22 +1,18 @@
-package Concurrent;
-
-import Concurrent.practice.Test2;
+package Concurrent.practice;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 给定两个线程，交替打印奇偶数
- * @author minmengtao
- * @date 2021-5-18
+ * @author: minmengtao
+ * @date: 2021/5/20
  */
-
-public class PrintOddAndEven {
-    public static class PrintNumber {
+public class Test3 {
+    public static class PrintNumberAndCharacter {
         static boolean flag = true;
 
-        public synchronized void print1(){
-            for(int i = 1; i <= 100; i += 2) {
+        public synchronized void printNum(){
+            for(int i = 1; i <= 52; i += 2) {
                 while(!flag) {
                     try {
                         wait();
@@ -24,14 +20,15 @@ public class PrintOddAndEven {
                         e.printStackTrace();
                     }
                 }
-                System.out.print(i + " ");
+                System.out.print(i);
+                System.out.print(i + 1);
                 flag = false;
                 notify();
             }
         }
 
-        public synchronized void print2(){
-            for(int i = 2; i <= 100; i += 2) {
+        public synchronized void printChar(){
+            for(int i = 0; i < 26; i++) {
                 while(flag) {
                     try {
                         wait();
@@ -39,7 +36,7 @@ public class PrintOddAndEven {
                         e.printStackTrace();
                     }
                 }
-                System.out.print(i + " ");
+                System.out.print((char)(i + 'A'));
                 flag = true;
                 notify();
             }
@@ -48,10 +45,9 @@ public class PrintOddAndEven {
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        Test2.PrintNumber t = new Test2.PrintNumber();
-        executorService.execute(() -> t.print1());
-        executorService.execute(() -> t.print2());
+        PrintNumberAndCharacter t = new PrintNumberAndCharacter();
+        executorService.execute(() -> t.printNum());
+        executorService.execute(() -> t.printChar());
         executorService.shutdown();
     }
 }
-

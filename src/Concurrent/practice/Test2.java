@@ -1,17 +1,9 @@
-package Concurrent;
-
-import Concurrent.practice.Test2;
+package Concurrent.practice;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * 给定两个线程，交替打印奇偶数
- * @author minmengtao
- * @date 2021-5-18
- */
-
-public class PrintOddAndEven {
+public class Test2 {
     public static class PrintNumber {
         static boolean flag = true;
 
@@ -48,10 +40,9 @@ public class PrintOddAndEven {
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        Test2.PrintNumber t = new Test2.PrintNumber();
+        PrintNumber t = new PrintNumber();
         executorService.execute(() -> t.print1());
         executorService.execute(() -> t.print2());
         executorService.shutdown();
     }
 }
-
