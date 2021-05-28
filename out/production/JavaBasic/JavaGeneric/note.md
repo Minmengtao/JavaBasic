@@ -6,5 +6,6 @@ Java 的泛型是伪泛型，这是因为 Java 在编译期间，所有的泛型
 
 泛型一般有三种使用方式：泛型类、泛型接口、泛型方法
 
+具体实现方法如GenericTest.java中
 
 [10道java泛型面试题](https://cloud.tencent.com/developer/article/1033693)

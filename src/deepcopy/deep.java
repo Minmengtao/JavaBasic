@@ -20,5 +20,22 @@ public class deep {
         System.out.println(str == str1);
         System.out.println(str == str2);
         System.out.println(str.equals(str2));
+
+        Integer[] num = {1, 2, 3, 4, 5};
+        int y = 1;
+        page(num, y);
+        for(int x : num) {
+            System.out.print(x + " ");
+        }
+        System.out.println(y);
+    }
+
+    public static void page(Integer[] num, int y) {
+        num[0] = 2;
+        y = 2;
+        for(int x : num) {
+            System.out.print(x + " ");
+        }
+        System.out.println(y);
     }
 }
