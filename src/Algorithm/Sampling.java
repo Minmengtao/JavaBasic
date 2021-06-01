@@ -43,6 +43,6 @@ public class Sampling {
             public int compare(int[] o1, int[] o2) {
                 return 0;
             }
-        })
+        });
     }
 }
